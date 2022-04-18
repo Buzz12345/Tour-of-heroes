@@ -42,26 +42,16 @@
 }
 
 .btn-nav {
-  border: 2px solid #212529;
-  background-color: #212529;
+  border: 2px solid #0D6EFD;
+  background-color: inherit;
   padding: 15px 35px;
   border-radius: 25px;
   transition: all .2s linear;
 
   &:hover {
-    border: 2px solid darken(#0D6EFD, 10%);
+    background-color: #0D6EFD;
   }
 
-}
-
-.btn-nav.active {
-  border: 2px solid #0D6EFD;
-  background-color: #0D6EFD;
-
-  &:hover {
-    border: 2px solid darken(#0D6EFD, 10%);
-    background-color: darken(#0D6EFD, 10%);
-  }
 }
 
 .header__search {

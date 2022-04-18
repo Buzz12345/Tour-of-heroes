@@ -40,7 +40,8 @@ export class HeroDetailComponent implements OnInit {
   }
   
   ngOnInit(): void {
-    this.getHero();
+    this.route.params .subscribe(
+      () => this.getHero()
+    );
   }
-
 }

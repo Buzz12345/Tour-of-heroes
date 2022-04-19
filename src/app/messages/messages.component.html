@@ -1,11 +1,11 @@
-<div class="messages" id="messagesBlock">
+<div class="messages" id="messagesBlock" *ngIf="messageService.messages.length">
 
   <div class="messages__title" (click)="trigger()">
     <h2 class="messages__text">Messages</h2>
     <img src="../../assets/arrow-down.svg" alt="arrow" class="messages__arrow" id="messagesArrow">
   </div>
 
-  <div class="messages__list" id="messagesList" *ngIf="messageService.messages.length">
+  <div class="messages__list" id="messagesList">
     <div class="list__wrapper">
       <div *ngFor='let message of messageService.messages'>
         {{message}}

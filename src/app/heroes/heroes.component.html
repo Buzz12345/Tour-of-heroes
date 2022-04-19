@@ -1,20 +1,59 @@
-<h2>My Heroes</h2>
+<div class="heroes">
+  <div class="heroes__title">
+    <h2>My Heroes</h2>
+  </div>
 
-<ul class="heroes">
-  <li *ngFor="let hero of heroes">
-    <a routerLink="/detail/{{hero.id}}">
-      <span class="badge">{{hero.id}}</span> {{hero.name}}
-    </a> 
-    <button type="button" class="delete" title="delete hero"
-    (click)="delete(hero)">x</button>
-  </li>
-</ul>
+  <div class="heroes__main">
+    <div class="heroes__list">
+      <ul>
+        <li class="heroes__element" [class.selected]="hero.id === selectedHero?.id" (click)="select(hero)"
+          *ngFor="let hero of heroes">
+          <div class="heroes__info">
+            <div class="heroes__name">
+              {{hero.name}}
+            </div>
+            <div class="heroes__id">
+              Hero #{{hero.id}}
+            </div>
+          </div>
+        </li>
+        
+        <li class="heroes__add" routerLink="/add">
+          <div class="heroes__info">
+            <div class="heroes__name">
+              Add new hero
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
 
-<div>
-  <label for="new-hero">Hero name: </label>
-  <input autocomplete="off" id="new-hero" #heroName />
+    <div *ngIf="selectedHero" class="preview__heroes">
+      <div class="preview__info">
 
-  <button type="button" class="add-button" (click)="add(heroName.value); heroName.value=''">
-    Add hero
-  </button>
+        <div class="preview__name">
+          {{selectedHero.name}}
+        </div>
+
+        <div class="preview__description">
+          <p>
+            {{selectedHero.description}}
+          </p>
+        </div>
+        
+      </div>
+
+      <div class="preview__more">
+        <a routerLink="/detail/{{selectedHero.id}}" class="preview__btn">
+          More
+        </a>
+      </div>
+
+    </div>
+  </div>
+
 </div>
+
+
+
+<!-- <button type="button" class="delete" title="delete hero" (click)="delete(hero)">x</button> -->

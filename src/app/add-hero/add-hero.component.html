@@ -1,0 +1,13 @@
+<div class="add">
+  <div class="add__title">
+    <h2> Add new Hero </h2>
+  </div>
+  <div class="add__input">
+    <input placeholder="Hero name" autocomplete="off" class="add__name" #heroName>
+    <textarea placeholder="Description" autocomplete="off" class="add__desc" #heroDesc></textarea>
+  </div>
+  <div class="add__save">
+    <button type="button" class="btn__add" (click)="add(heroName.value, heroDesc.value)">Add hero</button>
+    <button type="button" class="btn__back" (click)="back()">Cancel</button>
+  </div>
+</div>

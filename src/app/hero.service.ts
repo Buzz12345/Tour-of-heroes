@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { catchError, map, tap } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Hero } from './hero';
+import { Hero, News } from './hero';
 import { MessageService } from './message.service';
 
 @Injectable({ 
@@ -12,6 +12,11 @@ import { MessageService } from './message.service';
 export class HeroService {
 
   private heroesUrl = 'api/heroes';  
+  private newsUrl = 'api/news';  
+  
+  public httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  };
 
   constructor(
     private http: HttpClient,
@@ -31,11 +36,6 @@ export class HeroService {
     };
   }
 
-  public httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-  };
-  
-
   public getHeroes(): Observable<Hero[]> {
     return this.http.get<Hero[]>(this.heroesUrl).pipe(
       tap(_ => this.log('fetched heroes')),
@@ -48,6 +48,13 @@ export class HeroService {
     return this.http.get<Hero>(url).pipe(
       tap(_ => this.log(`fetched hero id=${id}`)),
       catchError(this.handleError<Hero>(`getHero id=${id}`))
+    );
+  }
+
+  public getNews(): Observable<News[]> {
+    return this.http.get<News[]>(this.newsUrl).pipe(
+      tap(_ => this.log('fetched news')),
+      catchError(this.handleError<News[]>('getNews', []))
     );
   }
 
@@ -65,11 +72,28 @@ export class HeroService {
     );
   }
 
+  public addNews(inp: News): Observable<News> {
+    console.log(inp);
+    
+    return this.http.post<News>(this.newsUrl, inp, this.httpOptions).pipe(
+      tap((newNews: News) => this.log(`added news w/ id=${newNews.id}`)),
+      catchError(this.handleError<News>('addNews'))
+    );
+  }
+
   public deleteHero(id: number): Observable<Hero> {
     const url = `${this.heroesUrl}/${id}`;
     return this.http.delete<Hero>(url, this.httpOptions).pipe(
       tap(_ => this.log(`deleted hero id=${id}`)),
       catchError(this.handleError<Hero>('deleteHero'))
+    );
+  }
+
+  public deleteNews(id: number): Observable<News> {
+    const url = `${this.newsUrl}/${id}`;
+    return this.http.delete<News>(url, this.httpOptions).pipe(
+      tap(_ => this.log(`deleted news id=${id}`)),
+      catchError(this.handleError<News>('deleteNews'))
     );
   }
 

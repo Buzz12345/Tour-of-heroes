@@ -1,10 +1,70 @@
-<div *ngIf="hero">
-  <h2>{{hero.name | uppercase}} Details</h2>
-  <div><span>id: </span>{{hero.id}}</div>
-  <div>
-    <label for="hero-name">Hero name: </label>
-    <input autocomplete="off" id="hero-name" [(ngModel)]="hero.name" placeholder="Hero name"/>
+<div *ngIf="hero" class="hero">
+
+  <div class="hero__info">
+    <div class="hero__control">
+      <div class="hero__preview">
+        <div class="hero__name">
+          {{hero.name}}
+        </div>
+        <div class="hero__id">
+          Hero #{{hero.id}}
+        </div>
+      </div>
+      <div class="hero__buttons">
+        <button type="button" class="hero__btn remove" (click)="remove()">DELETE</button>
+        <button type="button" class="hero__btn save" (click)="save()">SAVE CHANGES</button>
+        <button type="button" class="hero__btn back" (click)="goBack()">BACK</button>
+      </div>
+    </div>
+
+    <div class="hero__change">
+      <div class="preview__hero">
+        <div class="preview__name">
+          <input autocomplete="off" class="edit__name" [(ngModel)]="hero.name" placeholder="Hero name" />
+        </div>
+  
+        <div class="preview__description">
+          <textarea placeholder="Description" [(ngModel)]="hero.description" class="edit__desc"></textarea>
+        </div>
+      </div>
+
+    </div>
   </div>
-  <button type="button" (click)="goBack()">go back</button>
-  <button type="button" (click)="save()">save</button>
+
+  <div class="news">
+    <div class="news__add">
+      <div class="add__title">
+        <h2>ADD NEWS</h2>
+      </div>
+
+      <div class="add__input">
+        <div class="add__text">
+          <textarea placeholder="Write new news" #addText></textarea>
+        </div>
+        <div class="add__btn">
+          <button type="button" (click)="addNews(addText.value)">ADD</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="news__list" *ngIf="news?.length">
+      <div class="list__title">
+        <h2>NEWS</h2>
+      </div>
+
+      <ul>
+        <li *ngFor="let n of news">
+          <div class="list__text">
+            {{n.newsText}}
+          </div>
+          <div class="list__delete">
+            <button type="button" (click)="deleteNews(n.id)">DELETE</button>
+          </div>
+        </li>
+      </ul>
+
+    </div>
+
+  </div>
+
 </div>

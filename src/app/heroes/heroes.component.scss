@@ -12,10 +12,7 @@
 .heroes__main {
   display: flex;
   flex-direction: row;
-
   margin-top: 40px;
-  margin-bottom: 100px;
-
 }
 
 .heroes__list {
@@ -32,10 +29,6 @@ ul {
   color: #212529;
   text-decoration: none;
   cursor: pointer;
-
-  display: flex;
-  flex-direction: row;
-  align-items: center;
 
   margin-top: 5px;
   padding: 10px 15px;

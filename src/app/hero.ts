@@ -5,7 +5,7 @@ export interface Hero {
 }
 
 export interface News {
-    newsId: number;
+    id: number;
     heroId: number;
     newsText: string;
 }

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Location } from '@angular/common';
-import { Hero } from '../hero';
+import { Hero, News } from '../hero';
 import { HeroService } from '../hero.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-hero-detail',
@@ -13,22 +13,45 @@ import { HeroService } from '../hero.service';
 export class HeroDetailComponent implements OnInit {
   
   public hero?: Hero;
+  public news?: News[];
   
   constructor(
     private route: ActivatedRoute,
     private heroService: HeroService,
-    private location: Location
+    private router: Router
   ) {}
 
   private getHero(): void {
     const id: number = Number(this.route.snapshot.paramMap.get('id'));
     this.heroService.getHero(id).subscribe(
       receivedHero => this.hero = receivedHero
-      );
+    );
+  }
+
+  private getNews(): void {
+    const id: number = Number(this.route.snapshot.paramMap.get('id'));
+    this.heroService.getNews().subscribe(
+      receivedNews => {
+        this.news = receivedNews;
+        this.news = this.news.filter(e => e.heroId == id);
+      }
+    );
+  }
+
+  public deleteNews(id: number): void {
+    this.heroService.deleteNews(id).subscribe(
+      () => this.getNews()
+    );
+  }
+
+  public addNews(inp: string): void {
+    this.heroService.addNews({heroId: this.hero?.id, newsText: inp} as News).subscribe(
+      () => this.getNews()
+    )
   }
 
   public goBack(): void {
-    this.location.back();
+    this.router.navigate(['./heroes']);
   }
 
   public save(): void {
@@ -39,9 +62,19 @@ export class HeroDetailComponent implements OnInit {
     }
   }
   
+  public remove(): void {
+    if (this.hero !== undefined) {
+      this.heroService.deleteHero(this.hero.id).subscribe();
+      this.goBack();
+    }
+  }
+
   ngOnInit(): void {
     this.route.params.subscribe(
-      () => this.getHero()
+      () => {
+        this.getHero(); 
+        this.getNews();
+      }
     );
   }
 }

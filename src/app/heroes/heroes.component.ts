@@ -20,7 +20,6 @@ export class HeroesComponent implements OnInit {
       this.selectedHero = undefined;
     } else {
       this.selectedHero = hero;
-      console.log(this.selectedHero);
     }
   }
 
@@ -29,11 +28,6 @@ export class HeroesComponent implements OnInit {
       allHeroes => this.heroes = allHeroes
     );
   }
-
-  // public delete(hero: Hero): void {
-  //   this.heroes = this.heroes.filter(arrayElement => arrayElement !== hero);
-  //   this.heroService.deleteHero(hero.id).subscribe();
-  // }
 
   ngOnInit(): void {
     this.getHeroes();

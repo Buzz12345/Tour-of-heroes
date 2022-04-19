@@ -1,16 +1,18 @@
 <div class="search">
   <div class="search__input">
-    <input autocomplete="off" #searchBox class="search__box" placeholder="SEARCH HERO" (input)="search(searchBox.value)" />
+    <input autocomplete="off" #searchBox class="search__box" placeholder="SEARCH HERO"
+      (input)="search(searchBox.value)" (focus)="triggerList('block')" (focusout)="triggerList('none')" />
   </div>
 
   <div class="search__result">
     <ul class="search__list">
-      <li routerLink="/detail/{{hero.id}}" class="search__element" (click)="searchBox.value=''; search(searchBox.value)" *ngFor="let hero of heroes$ | async">
+      <li routerLink="/detail/{{hero.id}}" class="search__element" (click)="searchBox.value=''; search(searchBox.value)"
+        *ngFor="let hero of heroes$ | async">
         <a>
           {{hero.name}}
         </a>
       </li>
     </ul>
-  
+
   </div>
 </div>

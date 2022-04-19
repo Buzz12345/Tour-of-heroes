@@ -13,6 +13,6 @@ export class MessageService {
   }
 
   public clear(): void {
-    this.messages = [];
+    this.messages = [''];
   }
 }

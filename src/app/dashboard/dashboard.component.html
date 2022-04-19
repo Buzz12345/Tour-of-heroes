@@ -1,7 +1,12 @@
-<h2>Top Heroes</h2>
-<div class="heroes-menu">
-  <a *ngFor="let hero of topHeroes"
-      routerLink="/detail/{{hero.id}}">
-      {{hero.name}}
-  </a>
-</div>  
+<div class="dashboard">
+
+  <div class="top">
+    <h2>Top Heroes</h2>
+    <div class="top__list">
+      <a class="top__element" *ngFor="let hero of topHeroes" routerLink="/detail/{{hero.id}}">
+        {{hero.name}}
+      </a>
+    </div>
+  </div>
+
+</div>

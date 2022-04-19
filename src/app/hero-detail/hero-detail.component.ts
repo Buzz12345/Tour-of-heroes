@@ -34,13 +34,13 @@ export class HeroDetailComponent implements OnInit {
   public save(): void {
     if (this.hero) {
       this.heroService.updateHero(this.hero).subscribe(
-        () => this.goBack()
+        () => this.getHero()
       );
     }
   }
   
   ngOnInit(): void {
-    this.route.params .subscribe(
+    this.route.params.subscribe(
       () => this.getHero()
     );
   }

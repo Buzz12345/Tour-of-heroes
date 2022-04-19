@@ -13,7 +13,12 @@
   padding: 15px;
 
   width: 100%;
-}
+
+  &:focus {
+    outline: 1px solid #FFFFFF;
+    border-color: #FFFFFF;
+  }
+} 
 
 .search__result {
   width: 100%;
@@ -27,6 +32,17 @@
   list-style-type: none;
   margin: 0;
   padding: 0;
+
+  overflow: auto;
+  max-height: 200px;
+
+  &::-webkit-scrollbar {
+    background-color: #212529;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #636A71;
+  }
 }
 
 .search__element {

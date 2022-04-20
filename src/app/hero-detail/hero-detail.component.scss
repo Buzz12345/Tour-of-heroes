@@ -178,6 +178,11 @@ ul {
   margin-top: 10px;
 }
 
+.news__ul {
+  display: flex;
+  flex-direction: column-reverse;
+}
+
 .list__title {
   font-weight: 700;
   font-size: 30px;

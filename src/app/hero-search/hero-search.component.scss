@@ -57,10 +57,17 @@
     background-color: darken(#2F3337, 10%);
     cursor: pointer;
   }
+
+  & a {
+    color: #FFFFFF;
+    text-decoration: none;
+  }
 }
 
-.search__element a {
-  font-family: 'Inter', sans-serif;
-  color: #FFFFFF;
-  text-decoration: none;
+@media (max-width: 768px) {
+
+  .search {
+    width: 100%;
+  }
+
 }

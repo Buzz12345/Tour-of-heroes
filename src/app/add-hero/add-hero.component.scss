@@ -1,12 +1,13 @@
 .add {
   text-align: center;
+
   margin-top: 100px;
   margin-bottom: 200px;
-}
 
-.add__title h2 {
-  font-weight: 600;
-  font-size: 40px;
+  & h2 {
+    font-weight: 600;
+    font-size: 40px;
+  }
 }
 
 .add__input {
@@ -17,53 +18,88 @@
   margin-top: 40px;
 }
 
-.add__name {
+.inp {
   padding: 15px 30px;
   font-size: 18px;
-  width: 50%;
+
+  max-width: 50%;
+  width: 100%;
 }
 
 .add__desc {
   margin-top: 10px;
-  width: 50%;
-  padding: 15px 30px;
-  font-size: 18px;
+
   resize: vertical;
+  min-height: 120px;
 }
+
+
 
 .add__save {
-  margin-top: 50px;
+  margin-top: 30px;
 
-  & button {
-    font-weight: 700;
-    font-size: 20px;
-    padding: 10px 20px;
-    background-color: #FFFFFF;
-    border-radius: 50px;
-    cursor: pointer;
+  display: flex;
+  flex-direction: row;
 
-    max-width: 10%;
-    width: 100%;
-
-    transition: all .2s linear;
-  }
+  justify-content: center;
+  align-items: center;
 }
 
-.btn__add {
-  color: #31D02E;
-  border: 3px solid #0D6EFD;
+.btn {
+  margin-top: 20px;
 
-  &:hover {
-    border-color:#31D02E;
+  font-weight: 700;
+  font-size: 20px;
+  background-color: #FFFFFF;
+  cursor: pointer;
+  
+  padding: 10px 20px;
+  border-radius: 50px;
+
+  max-width: 25%;
+  width: 100%;
+
+  transition: border-color .2s linear;
+
+  &-add {
+    color: #31D02E;
+    border: 3px solid #0D6EFD;
+  
+    &:hover {
+      border-color: #31D02E;
+    }
   }
+
+  &-back {
+    color: #F94843;
+    border: 3px solid #0D6EFD;
+    margin-left: 40px;
+  
+    &:hover {
+      border-color: #F94843;
+    }
+  }
+
 }
 
-.btn__back {
-  border: 3px solid #0D6EFD;
-  color: #F94843;
-  margin-left: 20px;
+@media (max-width:1024px) {
+  .inp {
+    max-width: 75%;
+  }
+  
+  .btn {
+    max-width: 37.5%;
+  }
 
-  &:hover {
-    border-color:#F94843;
+}
+
+@media (max-width: 425px) {
+  .add__save {
+    flex-direction: column;
+  }
+
+  .btn {
+    margin-left: 0;
+    font-size: 16px;
   }
 }

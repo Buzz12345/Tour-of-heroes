@@ -1,10 +1,13 @@
 <div class="heroes">
-  <div class="heroes__title">
-    <h2>My Heroes</h2>
+
+  <div>
+    <h2 class="heroes__title">My Heroes</h2>
   </div>
 
   <div class="heroes__main">
+
     <div class="heroes__list">
+
       <ul>
         <li class="heroes__element" [class.selected]="hero.id === selectedHero?.id" (click)="select(hero)"
           *ngFor="let hero of heroes">
@@ -25,29 +28,40 @@
             </div>
           </div>
         </li>
+
       </ul>
     </div>
 
+
+
     <div *ngIf="selectedHero" class="preview__heroes">
-      <div class="preview__info">
 
-        <div class="preview__name">
-          {{selectedHero.name}}
+      <div class="preview__wrapper">
+
+        <div class="preview__info">
+
+          <div class="preview__name">
+            {{selectedHero.name}}
+          </div>
+
+          <div class="preview__description">
+            {{selectedHero.description}}
+          </div>
+
         </div>
 
-        <div class="preview__description">
-          {{selectedHero.description}}
+        <div class="preview__more">
+
+          <a routerLink="/detail/{{selectedHero.id}}" class="preview__btn">
+            More
+          </a>
+
         </div>
 
-      </div>
-
-      <div class="preview__more">
-        <a routerLink="/detail/{{selectedHero.id}}" class="preview__btn">
-          More
-        </a>
       </div>
 
     </div>
+
   </div>
 
 </div>

@@ -55,11 +55,28 @@ export class HeroDetailComponent implements OnInit {
   }
 
   public save(): void {
-    if (this.hero) {
+    if (this.hero && this.hero.name.trim().length > 0) {
       this.heroService.updateHero(this.hero).subscribe(
-        () => this.getHero()
+        () => {
+          this.getHero();
+          this.indicate();
+        }
       );
     }
+  }
+
+  public indicate(): void {
+
+    const saveBtn = document.getElementById('btnSave');
+
+    if (saveBtn != undefined) {
+      saveBtn.innerText = 'SAVED!';
+      
+      setTimeout(() => {
+        saveBtn.innerText = 'SAVE CHANGES';
+      }, 1000);
+    }
+
   }
   
   public remove(): void {

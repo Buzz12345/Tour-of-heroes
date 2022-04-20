@@ -1,8 +1,18 @@
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin-top: 20px;
+
+  & li {
+    margin-top: 25px;
+  }
+}
+
 .hero {
   margin-top: 100px;
   margin-bottom: 200px;
-  margin-left: 50px;
-  margin-right: 50px;
+
+  padding: 0 50px;
 }
 
 .hero__info {
@@ -26,6 +36,7 @@
 .hero__name {
   font-weight: 500;
   font-size: 18px;
+  word-wrap: break-word
 }
 
 .hero__buttons {
@@ -74,15 +85,10 @@
 .hero__change {
   max-width: 75%;
   width: 100%;
-
+  padding: 0 30px;
 }
 
 .preview__hero {
-  max-width: 800px;
-  max-height: 1000px;
-  height: 100%;
-  width: 100%;
-
   margin: 0 auto;
   border: 3px solid #0D6EFD;
   border-radius: 10px;
@@ -112,8 +118,6 @@
     background-color: #D3D3D3;
   }
 }
-
-// news
 
 .news {
   margin-top: 100px;
@@ -170,17 +174,6 @@
   }
 }
 
-
-ul {
-  list-style-type: none;
-  padding: 0;
-  margin-top: 20px;
-
-  & li {
-    margin-top: 25px;
-  }
-}
-
 .news__list {
   margin-top: 10px;
 }
@@ -196,10 +189,11 @@ ul {
 
   font-size: 18px;
   border-radius: 10px;
-  
+
   padding: 15px 30px;
   border: 2px solid #0D6EFD;
 
+  word-wrap: break-word;
 }
 
 .list__delete {
@@ -220,5 +214,67 @@ ul {
     &:hover {
       border-color: #F94843;
     }
+  }
+}
+
+
+@media (max-width: 1200px) {
+  .hero {
+    padding: 0 10px;
+  }
+
+  .preview__hero {
+    padding: 20px;
+  }
+
+  .hero__btn {
+    margin-top: 40px;
+  }
+}
+
+@media (max-width: 850px) {
+  .hero {
+    padding: 0 5px;
+  }
+
+  .hero__change {
+    padding: 0 10px;
+  }
+
+  .preview__hero {
+    padding: 10px;
+  }
+
+  .hero__btn {
+    margin-top: 30px;
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero__btn {
+    margin-top: 15px;
+  }
+
+  .hero__control {
+    max-width: 100%;
+  }
+
+  .hero__info {
+    flex-direction: column;
+  }
+
+  .hero__change {
+    max-width: 100%;
+    padding: 0;
+    margin-top: 20px;
+  }
+
+  .add__btn button {
+    font-size: 18px;
+  }
+
+  .list__delete button {
+    font-size: 18px;
   }
 }

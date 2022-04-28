@@ -23,6 +23,10 @@
   justify-content: center;
 
   cursor: pointer;
+
+  position: absolute;
+  top: -50%;
+  left: 0;
 }
 
 .messages__arrow {
@@ -41,10 +45,12 @@
   background-color: #25292c;
   padding: 15px 20px;
 
-  display: none;
+  transform: translateY(100%);
+
+  transition: all .2s linear;
 
   &.active {
-    display: block;
+    transform: translateY(0);
   }
 }
 
@@ -83,6 +89,7 @@
 @media (max-width:425px) {
   .messages__title {
     max-width: 150px;
+    top: -40%;
   }
 
   .messages__text {
